@@ -1,10 +1,10 @@
 <?php
 
+
 /**
- * author: 
- * date:
- * description: A root class for all manage classes. This class communicates with DB
- */
+* @author Daniel Bonsu
+* @version 1.1 Formatted version of PHP code that acts as the control class for AJAX calls.
+*/
 
 define("DB_HOST", 'localhost');
 define("DB_NAME", 'se_inventory');
