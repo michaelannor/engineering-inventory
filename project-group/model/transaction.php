@@ -18,7 +18,9 @@ class transaction extends adb {
  * @param [[date_to_be_returned]]
  */
   function check_out_equipment($user, $equipment, $date_borrowed, $date_to_be_returned){
-    # code...
+    $str_query = "insert into se_inventory_transaction set user_id='$user', equipment_id='$equipment',
+    date_borrowed='$date_borrowed', date_to_be_returned='$date_to_be_returned' ";
+    return this->query($str_query);
   }
 
 /**
