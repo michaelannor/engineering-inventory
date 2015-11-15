@@ -5,14 +5,16 @@
 	include_once("adb.php");
 	class equipment extends adb{
 	/**
-	*@method boolean add_equipment($name,$time_purchased,$description,$price) adds equipment to the equipment table
+	*@method boolean add_equipment($name,$id,$manufacturer,$supplier,$lab_id,$safety_requirement) adds equipment to the equipment table
 	*@param string $name name of equipment
-	*@param integer $time_purchase time equipment was purchased
-	*@param string $description  description of equipment
-	*@param integer $price price of equipment
+	*@param integer $id id of equipment
+	*@param string  $manufacturer manufacturer of equipment
+	*@param string $supplier  supplier of equipment
+	*@param integer $lab_id lab  where equipment belong
+	*@param string $safety_requirement the safety requirement of equipment
     	**/
-	function add_equipment($name,$time_purchased,$description,$price){
-	 $str_query="INSERT INTO equipment set equipments_name='$name',time_purchased='$time_purchased', description='$description', price=$price";
+	function add_equipment($name,$id,$manufacturer,$supplier,$lab_id,$safety_requirement){
+	 $str_query="INSERT INTO equipment set equipment_id='$id',equipment_name='$name',manufacturer_name='$manufacturer', supplier_name='$supplier', laboratrory_id=$lab_id,safety_requirement='$safety_requirement'";
 	 return $this->query($str_query).mysql_error();
 	}
 

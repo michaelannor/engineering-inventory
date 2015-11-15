@@ -83,13 +83,14 @@
 	<br><br>
 	<form method="get" action="addEquipment.php">
 	<br>
-	/** a form for the various fields of equipment details ( equipment name, 
-	time purchased, description and price)
+	/** a form for the various fields of equipment details (name,id,manufacturer,supplier,lab_id,safety_requirement)
 	**/
 	<center><div><input type="text" name="nm" placeholder="Enter Equipment Name" size="30" required></div><br> 
-	<center><div><input type="text" name="tp" placeholder="Enter Time Purchased" size="30" required></div><br>
-	<center><div><input type="text" name="dc" placeholder="Enter Description" size="30" required></div><br>
-	<center><div><input type="text" name="pr" placeholder="Enter Price" size="30" required></div><br>
+	<center><div><input type="text" name="tp" placeholder="Enter Equipment ID" size="30" required></div><br>
+	<center><div><input type="text" name="dc" placeholder="Enter Manufacturer" size="30" required></div><br>
+	<center><div><input type="text" name="pr" placeholder="Enter Supplier" size="30" required></div><br>
+	<center><div><input type="text" name="lb" placeholder="Enter Lab ID" size="30" required></div><br>
+	<center><div><input type="text" name="sf" placeholder="Enter Safety Requirement" size="30" required></div><br>
 	<div><input type="submit" name="submit" value="Add Equipment"></div><br></center>
 	</form>
 	<?php
@@ -101,13 +102,15 @@
 	**/
 	$obj=new equipment();
 	$name=$_REQUEST['nm'];
-	$time_purchased=$_REQUEST['tp'];
-	$description=$_REQUEST['dc'];
-	$price=$_REQUEST['pr'];
+	$id=$_REQUEST['tp'];
+	$manufacturer=$_REQUEST['dc'];
+	$supplier=$_REQUEST['pr'];
+	$lab_id=$_REQUEST['lb'];
+	$safety_requirement=$_REQUEST['sf'];
 	/** check for successfull addition of an equipment onto the 
            database. If no an error message is return else gives a success message
 	**/
-	if(!$obj->add_equipment($name,$time_purchased,$description,$price)){
+	if(!$obj->add_equipment($name,$id,$manufacturer,$supplier,$lab_id,$safety_requirement)){
 		echo "Error adding";
 	}
 	else{
