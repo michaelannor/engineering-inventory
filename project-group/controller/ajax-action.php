@@ -1,9 +1,9 @@
 <?php
 
 /**
- * author:
- * date:
- * description:
+ * author: Michael Annor
+ * date: 15th November, 2015
+ * description: ajax-action page, interfaces with javascript to process commands from the frontend
  */
 
   $cmd = $_REQUEST['cmd'];
