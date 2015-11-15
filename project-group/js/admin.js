@@ -12,7 +12,7 @@ function unhover(img, id) {
 function viewHome() {
   var content = "";
 
-  content +=  "<div class='col-md-3'><a>";
+  content +=  "<div class='col-md-3'><a href='#'>";
   content += "<img src='../media/co.png' class='img-responsive' id='co-img'>";
   content += "</a><span class='wrapper'><hr></span></div>";
   content +=  "<div class='col-md-3'><a href='#'>";
@@ -35,8 +35,8 @@ function view_check_out_equipment() {
   content += "<input id='checkout_equipment_id_input' type='text' class='form-control input-lg' placeholder='Equipment ID'></div><div class='form-group'>";
   content += "<label for='checkout_student_id_input'>Student ID</label><input id='checkout_student_id_input' type='text' class='form-control input-lg' placeholder='Student ID'></div>";
   content += "<div class='form-group'><label for='checkout_dateout_id_input'>Date Checked Out:</label><input id='checkout_dateout_id_input' type='date' class='form-control input-lg' ";
-  content += "placeholder='DD/MM/YYYY'></div><div class='form-group'><label for='checkout_datein_id_input'>Return Date:</label><input id='checkout_datein_id_input' type='date' ";
-  content += "class='form-control input-lg' placeholder='DD/MM/YYYY'>";
+  content += "placeholder='YYYY-MM-DD'></div><div class='form-group'><label for='checkout_datein_id_input'>Return Date:</label><input id='checkout_datein_id_input' type='date' ";
+  content += "class='form-control input-lg' placeholder='YYYY-MM-DD'>";
   content += "</div><div class='form-group'><button id='checkoutbtn' onclick='check_out_equipment()' class='btn btn-primary btn-lg btn-block'>Check Out</button></div><br><hr></div>";
 
   $("#main-content").html(content);
@@ -61,12 +61,14 @@ function check_out_equipment() {
   var datereturn = $("#checkout_datein_id_input").val();
 
   var theUrl="../controller/ajax-action.php?cmd=1&user="+user+"&equipment="+equipment+"&borrowed="+borrowed+"&return="+datereturn;
-alert(theUrl);
+// alert(theUrl);
 var obj=sendRequest(theUrl);		//send request to the above url
-alert(obj.result);
+// alert(obj.result);
 var status = "";
 if(obj.result==1){					//check result
 status += "<div  class='alert alert-success alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Success!</strong> Checkout Successful</div>";
+  // viewHome();
+  location.reload(); //Find a better solution
   $("#divstatus").html(status);
 }
 else {
