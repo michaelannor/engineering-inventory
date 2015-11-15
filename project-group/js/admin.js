@@ -61,12 +61,12 @@ function check_out_equipment() {
   var datereturn = $("#checkout_datein_id_input").val();
 
   var theUrl="../controller/ajax-action.php?cmd=1&user="+user+"&equipment="+equipment+"&borrowed="+borrowed+"&return="+datereturn;
-
+alert(theUrl);
 var obj=sendRequest(theUrl);		//send request to the above url
 alert(obj.result);
 var status = "";
 if(obj.result==1){					//check result
-status += "<div  class='alert alert-success alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Warning!</strong> Couldn't Checkout</div>";
+status += "<div  class='alert alert-success alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Success!</strong> Checkout Successful</div>";
   $("#divstatus").html(status);
 }
 else {
