@@ -22,7 +22,20 @@
     * {
       border-radius: 0 !important;
     }
+
+    @import url(http://fonts.googleapis.com/css?family=Roboto:400);
+    body {
+      background-color:;
+      -webkit-font-smoothing: antialiased;
+      font: normal 14px Roboto,arial,sans-serif;
+    }
+
     </style>
+
+
+
+
+
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,21 +52,70 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Username <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Something Else</a></li>
+            <li class="active"><a href="#">Menu 1 <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Menu 2</a></li>
           </ul>
 
 
 
-<p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+<!-- <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
           <ul class="nav navbar-nav navbar-right">
-            <form class="navbar-form navbar-left" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+            <form class="navbar-form pull-left">
+        <div class="input-group" style="max-width:470px;">
+          <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+          <div class="input-group-btn">
+            <button class="btn btn-default btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+          </div>
+        </div>
+    </form>
           </ul>
+ -->
+
+
+
+          <!-- <div class="collapse navbar-collapse" id="navbar-collapse1"> -->
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                       <li><a href="#" target="_ext">Michael Annor</a></li>
+                       <li>
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#"><span class="badge pull-right">40</span>Link</a></li>
+                            <li><a href="#"><span class="badge pull-right">2</span>Link</a></li>
+                            <li><a href="#"><span class="badge pull-right">0</span>Link</a></li>
+                            <li><a href="#"><span class="label label-info pull-right">1</span>Link</a></li>
+                            <li><a href="#"><span class="badge pull-right">13</span>Link</a></li>
+                          </ul>
+                       </li>
+                       <li><a href="#" id="btnToggle"><i class="glyphicon glyphicon-th-large"></i></a></li>
+                       <li><a href="#"><i class="glyphicon glyphicon-user"></i></a></li>
+
+                       <li>
+                         <form class="navbar-form pull-right">
+                             <div class="input-group" style="max-width:470px;">
+                               <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                               <div class="input-group-btn">
+                                 <button class="btn btn-default btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                               </div>
+                             </div>
+                         </form>
+                       </li>
+
+
+
+
+                     </ul>
+
+
+                  <!-- </div> -->
+
+
+
+
+
+
+
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
@@ -70,64 +132,85 @@
       </div>
 
 
-    <div class="row">
+    <div id="main-options"class="row">
   <div class="col-md-3">
-    <img src="media/a.jpg" class="img-responsive">
+    <a href="#"><img onmouseover="hover('media/el2.png','el-img');" onmouseout="unhover('media/el.png','el-img');" src="media/el.png" class="img-responsive" id="el-img"></a>
     <span class="wrapper">
-        <h5>
+        <!-- <h5>
           Electronics Lab
-        </h5>
+        </h5> -->
         <h7>
           <p>
-            Wires, Resistors, Meters and more
+            Wires, Resistors, Meters and more <hr>
           </p>
         </h7>
       </span>
 </div>
   <div class="col-md-3">
-    <img src="media/b.jpg" class="img-responsive">
+    <a href="#"><img onmouseover="hover('media/dl2.png','dl-img');" onmouseout="unhover('media/dl.png','dl-img');" src="media/dl.png" class="img-responsive" id="dl-img"></a>
     <span class="wrapper">
-        <h5>
+        <!-- <h5>
           Design Lab
-        </h5>
+        </h5> -->
         <h7>
           <p>
-            Papers, pencils 3d printers and more
+            Papers, pencils 3d printers and more <hr>
           </p>
         </h7>
       </span>
 </div>
   <div class="col-md-3">
-    <img src="media/a.png" class="img-responsive">
+    <a href="#"><img onmouseover="hover('media/rl2.png','rl-img');" onmouseout="unhover('media/rl.png','rl-img');" src="media/rl.png" class="img-responsive" id="rl-img"></a>
+
+
+
     <span class="wrapper">
-        <h5>
+        <!-- <h5>
           Robotics Lab
-        </h5>
+        </h5> -->
         <h7>
           <p>
-            Lego, turtlebots and more
+            Lego, turtlebots and more <hr>
           </p>
         </h7>
       </span>
 </div>
   <div class="col-md-3">
-    <img src="media/b.png" class="img-responsive">
+    <a href="#"><img onmouseover="hover('media/sl2.png','sl-img');" onmouseout="unhover('media/sl.png','sl-img');" src="media/sl.png" class="img-responsive" id="sl-img"></a>
     <span class="wrapper">
-        <h5>
+        <!-- <h5>
           Science Lab
-        </h5>
+        </h5> -->
         <h7>
           <p>
-            Potions, wands and more
+            Potions, wands and more <hr>
           </p>
         </h7>
       </span>
 </div>
-</div>
-
 
 </div>
 
+
+
+
+</div>
+
+<script>
+
+function hover(img, id) {
+
+  element = document.getElementById(id);
+
+    element.setAttribute('src', img);
+}
+function unhover(img, id) {
+  element = document.getElementById(id);
+    element.setAttribute('src', img);
+}
+
+
+</script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="jquery-2.1.4.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
