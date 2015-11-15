@@ -22,7 +22,7 @@
    * when called from the view]]
    */
   function check_out_equipment_cmd(){
-    include ("transaction.php");
+    include ("../model/transaction.php");
     $obj = new transaction();
     $user = $_REQUEST['user'];
     $equipment = $_REQUEST['equipment'];
@@ -47,7 +47,7 @@
    * @param [[int]] $equipment
    */
   function verify_equipment_helper($equipment){
-    include ("equipment.php");
+    include ("../model/equipment.php");
     $obj = new equipment();
 
     if($obj->verify_equipment($equipment)){
@@ -64,7 +64,7 @@
    * @param [[int]] $user
    */
   function verify_user_helper($user){
-    include ("user.php");
+    include ("../model/user.php");
     $obj = new user();
 
     if($obj->verify_user($user)){

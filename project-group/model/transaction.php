@@ -6,7 +6,7 @@
  * description: Class with queries to access the se_inventory_transaction table
  */
 
-include ("adb.php");
+include_once ("adb.php");
 
 class transaction extends adb {
 
@@ -20,7 +20,7 @@ class transaction extends adb {
   function check_out_equipment($user, $equipment, $date_borrowed, $date_to_be_returned){
     $str_query = "insert into se_inventory_transaction set user_id='$user', equipment_id='$equipment',
     date_borrowed='$date_borrowed', date_to_be_returned='$date_to_be_returned' ";
-    return this->query($str_query);
+    return $this->query($str_query);
   }
 
 /**

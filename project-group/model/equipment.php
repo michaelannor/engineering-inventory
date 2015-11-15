@@ -6,7 +6,7 @@
  * description: Class with queries to access the se_inventory_equipment table
  */
 
-include ("adb.php");
+include_once ("adb.php");
 
 class equipment extends adb {
 
