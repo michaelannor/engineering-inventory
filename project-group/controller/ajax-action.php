@@ -30,11 +30,13 @@
     $to_return = $_REQUEST['return'];
 
     if(verify_equipment_helper($equipment)){
-      if($obj->check_out_equipment($user, $equipment, $borrowed, $to_return)){
-        echo '{"result":1,"message": "checked out successfully"}';
-      }
-      else{
-        echo '{"result":0,"message": "transaction not added."}';
+      if(verify_user_helper($user)){
+        if($obj->check_out_equipment($user, $equipment, $borrowed, $to_return)){
+          echo '{"result":1,"message": "checked out successfully"}';
+        }
+        else{
+          echo '{"result":0,"message": "transaction not added."}';
+        }
       }
     }
   }
@@ -49,6 +51,23 @@
     $obj = new equipment();
 
     if($obj->verify_equipment($equipment)){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  /**
+   * [[The verify_user_helper is a helper function to verify that a user exists before
+   * any transactions can be performed on it]]
+   * @param [[int]] $user
+   */
+  function verify_user_helper($user){
+    include ("user.php");
+    $obj = new user();
+
+    if($obj->verify_user($user)){
       return true;
     }
     else{
