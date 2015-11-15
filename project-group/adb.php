@@ -7,7 +7,7 @@
  */
 
 define("DB_HOST", 'localhost');
-define("DB_NAME", 'csashesi_michael-annor');
+define("DB_NAME", 'se_inventory');
 define("DB_PORT", 3306);
 define("DB_USER","csashesi_man16");
 define("DB_PWORD","db!E#Rqz2");

@@ -17,5 +17,4 @@
 	 $str_query="INSERT INTO equipment set equipment_id='$id',equipment_name='$name',manufacturer_name='$manufacturer', supplier_name='$supplier', laboratrory_id=$lab_id,safety_requirement='$safety_requirement'";
 	 return $this->query($str_query).mysql_error();
 	}
-
 ?>
