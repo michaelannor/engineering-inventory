@@ -29,11 +29,30 @@
     $borrowed = $_REQUEST['borrowed'];
     $to_return = $_REQUEST['return'];
 
-    if($obj->check_out_equipment($user, $equipment, $borrowed, $to_return)){
-      echo '{"result":1,"message": "checked out successfully"}';
+    if(verify_equipment_helper($equipment)){
+      if($obj->check_out_equipment($user, $equipment, $borrowed, $to_return)){
+        echo '{"result":1,"message": "checked out successfully"}';
+      }
+      else{
+        echo '{"result":0,"message": "transaction not added."}';
+      }
+    }
+  }
+
+  /**
+   * [[The verify_equipment_helper is a helper function to verify that an equipment exists before
+   * any transactions can be performed on it]]
+   * @param [[int]] $equipment
+   */
+  function verify_equipment_helper($equipment){
+    include ("equipment.php");
+    $obj = new equipment();
+
+    if($obj->verify_equipment($equipment)){
+      return true;
     }
     else{
-      echo '{"result":0,"message": "transaction not added."}';
+      return false;
     }
   }
 
