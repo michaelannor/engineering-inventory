@@ -91,12 +91,11 @@
 	<div class="form-group"><label for="supplier"> Supplier Name </label><input type="text" name="pr" class="form-control" placeholder="Enter Supplier Name" size="10" required></div>
 	<div class="form-group"><label for="lab">LabID</label><input type="text" name="lb" class="form-control" placeholder="Enter Lab ID" size="10" required></div>
 	<div class="form-group"><label for="safety"> Safety Requirement</label><input type="text" name="sf" class="form-control" placeholder="Enter Safety Requirement" size="10" required></div>
-	<div><input type="submit" name="submit" value="Add Equipment"></div>
+	<div><input type="submit" class="btn btn-info" value="Add Equipment"></div>	
 	
 	</form>
 	</div>
-	/** includes equipment class to make use of add equipment function
-	**/
+	
 	<?php
 	
 	if(isset($_REQUEST['nm'])){
@@ -118,9 +117,7 @@
 	}
 	?>
 	
-	<form action="equipment_view_index.php"><input type="submit" value ="Back to Home">
-	<div style=height:15px>
-	</div>
+	<form action="equipment_view_index.php"><input type="submit" class="btn btn-info"  value ="Back to Home">
 	</form>
 	</body>
 </html>
