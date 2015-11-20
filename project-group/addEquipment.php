@@ -1,7 +1,8 @@
-<html>
 	/**
 	*@author Nura Abdul-Rahman <nuraabd4@gmail.com>
 	*/
+<html>
+	
 	<head>
 	<title>Index</title>
 	<link rel="stylesheet" href="css/style.css">
@@ -78,28 +79,28 @@
 	</div>
 	<div style=height:15px>
 	</div>
-	<div id="divContent">
-	<body>
-	<br><br>
-	<form method="get" action="addEquipment.php">
+		<br><br>
+	<div class="container">
+	<center><h2> Add Equipment </h2></center>
+	<form method="post" action="addEquipment.php" role="form">
 	<br>
-	/** a form for the various fields of equipment details (name,id,manufacturer,supplier,lab_id,safety_requirement)
-	**/
-	<center><div><input type="text" name="nm" placeholder="Enter Equipment Name" size="30" required></div><br> 
-	<center><div><input type="text" name="tp" placeholder="Enter Equipment ID" size="30" required></div><br>
-	<center><div><input type="text" name="dc" placeholder="Enter Manufacturer" size="30" required></div><br>
-	<center><div><input type="text" name="pr" placeholder="Enter Supplier" size="30" required></div><br>
-	<center><div><input type="text" name="lb" placeholder="Enter Lab ID" size="30" required></div><br>
-	<center><div><input type="text" name="sf" placeholder="Enter Safety Requirement" size="30" required></div><br>
-	<div><input type="submit" name="submit" value="Add Equipment"></div><br></center>
+	
+	<div class="form-group"><label for="equipment">Equipment Name </label><input type="text" name="nm" class="form-control" placeholder="Enter Equipment Name" size="10" required></div>
+	<div class="form-group"><label for="id"> Equipment ID</label><input type="text" name="tp" class="form-control" placeholder="Enter Equipment ID" size="10" required></div>
+	<div class="form-group"><label for="manufacturer"> Manufacturer Name</label><input type="text" name="dc" class="form-control" placeholder="Enter Manufacturer Name" size="10" required></div>
+	<div class="form-group"><label for="supplier"> Supplier Name </label><input type="text" name="pr" class="form-control" placeholder="Enter Supplier Name" size="10" required></div>
+	<div class="form-group"><label for="lab">LabID</label><input type="text" name="lb" class="form-control" placeholder="Enter Lab ID" size="10" required></div>
+	<div class="form-group"><label for="safety"> Safety Requirement</label><input type="text" name="sf" class="form-control" placeholder="Enter Safety Requirement" size="10" required></div>
+	<div><input type="submit" name="submit" value="Add Equipment"></div>
+	
 	</form>
-	<?php
+	</div>
 	/** includes equipment class to make use of add equipment function
 	**/
+	<?php
+	
 	if(isset($_REQUEST['nm'])){
 	include_once("equipment.php");
-	/** creates an object of equipment class
-	**/
 	$obj=new equipment();
 	$name=$_REQUEST['nm'];
 	$id=$_REQUEST['tp'];
@@ -107,9 +108,7 @@
 	$supplier=$_REQUEST['pr'];
 	$lab_id=$_REQUEST['lb'];
 	$safety_requirement=$_REQUEST['sf'];
-	/** check for successfull addition of an equipment onto the 
-           database. If no an error message is return else gives a success message
-	**/
+	
 	if(!$obj->add_equipment($name,$id,$manufacturer,$supplier,$lab_id,$safety_requirement)){
 		echo "Error adding";
 	}
@@ -118,8 +117,7 @@
 	}
 	}
 	?>
-	/** a form that links to the home page and the "back" returns to the home page
-	**/
+	
 	<form action="equipment_view_index.php"><input type="submit" value ="Back to Home">
 	<div style=height:15px>
 	</div>
