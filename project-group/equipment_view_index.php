@@ -1,0 +1,147 @@
+<html>
+	<head>
+		<title>Index</title>
+		<link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
+		<script>
+			
+		</script>
+        
+        <script  src="jquery-2.1.3.js"> </script>
+	<script type="text/javascript">
+	
+	function sendRequest(u){
+				// Send request to server
+				//u a url as a string
+				//async is type of request
+				var obj=$.ajax({url:u,async:false});
+				//Convert the JSON string to object
+				var result=$.parseJSON(obj.responseText);
+				return result;	//return object
+				
+			}
+	function addEquipment(){
+		
+	}
+	function view(){
+		
+	}
+	function search(){
+	var search_text=txtSearch.value;
+	var strUrl="hello.php?cmd=1&st="+search_text;
+	var objResult=sendRequest(strUrl);
+	if(objResult.result==0){
+	$("#divStatus").text(objResult.message);
+	return;
+	}
+	while($("#mytable tr").length>1){
+	document.all.mytable.deleteRow(1);
+		}
+		
+	var thetable=document.getElementById('mytable');
+	var i;
+	var myvar="";
+	var item="";
+   for(i=0;i<objResult.equipment.length;i++){
+	myvar=thetable.insertRow();
+	item= myvar.insertCell();
+	myvar.style.backgroundColor="#CC6600";
+	item.innerHTML=objResult.equipment[i]['equipments_id'];
+	item=myvar.insertCell();
+    item.innerHTML="<a href='view.php?id="+objResult.equipment[i]['equipments_id']+"'>"+objResult.equipment[i]['equipments_name']+"</a>";
+    item=myvar.insertCell(); 
+	item.innerHTML="<a href='editEquipment.php?id="+objResult.equipment[i]['equipments_id']+"'>edit</a>";
+	item=myvar.insertCell(); 
+    item.innerHTML="<a href='deleteEquipment.php?id="+objResult.equipment[i]['equipments_id']+"'>delete</a>";
+				
+					
+	}
+	}
+	</script>
+        
+	</head>
+	<body>
+		<table id="pagelayout" align="center"               >
+			<tr>
+				<td colspan="2" id="pageheader">
+<div class="" style="     text-align:center;">
+    
+    <img src="css/ashesi_banner_2011.png" width="100%" height="auto">
+
+<!--    <i class="fa fa-home">&nbsp; </i><i  class="fa" ><b>Inventory</b></i>-->
+                    </div>   				</td>
+			</tr>
+            
+            
+			<tr>
+				<td id="mainnav">
+                    <div id="divMainNav">
+                        
+<!--
+                        <i class="fa" style="    margin:auto;
+    height: 9em; background-color:#243546; width: 100%;"> <i class="fa fa-home" style="font-size:30px; padding-top:auto; padding-bottom:auto;"> Inventory</i> 
+                        <br><br> Date: Sat Mar 28 <br>User: Daniel Bonsu
+                        </i>
+-->
+                        
+                         
+                 <a href="view_index.php"><div class="menu"><i class="fa fa-flask">&nbsp; Labs</i></div></a>
+                    <a href="searchStaff.php"><div class="menu"><i class="fa fa-group">&nbsp; Staff</i></div></a>
+                     <a href="equipment_view_index.php">   <div class="menu"><i class="fa fa-gear">&nbsp; Equipment</i></div></a>
+                        <a href="suppliersView.php"><div class="menu"><i class="fa fa-truck">&nbsp; Suppliers</i></div></a>
+                        <a href="view_GpManu.php"> <div class="menu"><i class="fa fa-wrench">&nbsp; Manufacturers</i></div></a>
+                        </div>
+				</td>
+				<td id="content">
+                    
+                    <div id="divPageMenu">
+                                    <span class="menuitem" ><i class="fa fa-navicons">&nbsp;</i></span>
+                                    <span class="menuitem" ><i class="fa fa-plus">&nbsp; </i></span>
+                        <span class="menuitem" ><i class="fa fa-edit">&nbsp; </i></span>
+                                    <span class="menuitem" ><i class="fa fa-trash">&nbsp; </i></span>
+				         <span class="menuitem" id="searcher" onclick="search()"><i class="fa fa-search">&nbsp; search</i></span>
+                          <input type="text" id="txtSearch" class="searcher"/>						 
+                                 
+                           </div>
+					
+					<div id="divStatus" class="status">
+							 Status Message
+
+					</div>
+					<div style=height:15px>
+					</div>
+					<div id="divContent">
+					<?php
+
+	include_once("equipment.php");
+	$obj=new equipment();
+	
+	
+	if(!$obj->view_equipment()){
+		echo"error running query";
+	}
+			echo "<table border='1' id='mytable' style = 'text-align: 30px'>";
+echo"<tr style='background-color:olive; color:white; text-align:center'><td>EQUIPMENTS_ID</td><td>EQUIPMENTS_NAME</td><td>DELETE</td><td>UPDATE</td></tr>";
+    $row=$obj->fetch();
+		while($row){
+	    	echo "<tr style='background-color:khaki'><td> ".$row['equipments_id']."</td><td>".$row['equipments_name']."</td><td><a href=deleteEquipment.php?id=".$row['equipments_id'].">delete</a></td>
+			<td><a href=editEquipment.php?id=".$row['equipments_id'].">edit</a> </td></tr>";
+	$row=$obj->fetch();
+		}
+	
+
+
+?>
+
+<form action="addEquipment.php"><input type="submit" value ="Add New Product">
+<div style=height:15px>
+</div>
+</form>
+                        
+					</div>
+				</td>
+			</tr>
+   
+		</table>
+	</body>
+</html>	
