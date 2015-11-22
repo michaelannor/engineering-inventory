@@ -1,6 +1,7 @@
 $(document).ready(viewHome());
 
 function hover(img, id) {
+  console.log("enter");
   element = document.getElementById(id);
   element.setAttribute('src', img);
 }
@@ -67,8 +68,10 @@ var obj=sendRequest(theUrl);		//send request to the above url
 var status = "";
 if(obj.result==1){					//check result
 status += "<div  class='alert alert-success alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Success!</strong> Checkout Successful</div>";
-  // viewHome();
-  location.reload(); //Find a better solution
+  viewHome();
+  check_out_hover();
+  check_out_click();
+  // location.reload(); //Find a better solution
   $("#divstatus").html(status);
 }
 else {
@@ -79,11 +82,14 @@ else {
 }
 
 $(function(){
+  check_out_click();
+});
 
+function check_out_click() {
   $("#co-img").click(function(){
     view_check_out_equipment();
   });
-});
+}
 
 // $(function () {
 //   $("#checkoutbtn").click(function(){
@@ -103,6 +109,7 @@ $(function() {
             $(this).attr("src", "../media/la.png");
         });
 });
+
 
 $(function() {
     $("#ad-img")
@@ -129,13 +136,17 @@ $(function() {
 });
 
 $(function() {
-    $("#co-img")
-        .mouseover(function() {
-            // var src = $(this).attr("src").match(/[^\.]+/) + "2.png";
-            $(this).attr("src", "../media/co2.png");
-        })
-        .mouseout(function() {
-            // var src = $(this).attr("src").replace("../media/la.png", ".png");
-            $(this).attr("src", "../media/co.png");
-        });
+  check_out_hover();
 });
+
+function check_out_hover() {
+  $("#co-img")
+      .mouseover(function() {
+          // var src = $(this).attr("src").match(/[^\.]+/) + "2.png";
+          $(this).attr("src", "../media/co2.png");
+      })
+      .mouseout(function() {
+          // var src = $(this).attr("src").replace("../media/la.png", ".png");
+          $(this).attr("src", "../media/co.png");
+      });
+}
