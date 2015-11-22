@@ -28,6 +28,6 @@
 		    $str_query="INSERT INTO se_inventory_faults set equipment_id=$id,equipment_name='$name',laboratrory_id=$lab_id,description='$description',date_of_damage=$date";
 		    return $this->query($str_query).mysql_error();
 	    }
-	}
+	
 }
 ?>

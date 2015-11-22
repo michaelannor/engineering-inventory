@@ -85,6 +85,14 @@ CREATE TABLE IF NOT EXISTS `se_inventory_users` (
   UNIQUE KEY `user_name` (`user_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE IF NOT EXISTS `se_inventory_faults` (
+  `equipment_id` int(10) NOT NULL PRIMARY KEY,
+  `equipment_name` varchar(100) NOT NULL,
+  `laboratory_id` int(10) NOT NULL,
+  `description` varchar(250) NOT NULL,
+  `date_of_damage` date NOT NULL,
+  ) E
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
