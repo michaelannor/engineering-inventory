@@ -100,7 +100,7 @@
 	    $supplier=$_REQUEST['pr'];
 	    $lab_id=$_REQUEST['lb'];
 	    $safety_requirement=$_REQUEST['sf'];
-	    if(!$obj->add_equipment($name,$id,$manufacturer,$supplier,$lab_id,$safety_requirement)){
+	    if($obj->add_equipment($name,$id,$manufacturer,$supplier,$lab_id,$safety_requirement)){
             echo '{"result":1,"message": "equipment successfully added"}';
         }
         else{
