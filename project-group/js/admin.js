@@ -98,7 +98,7 @@ function check_in_equipment() {
   var equipment = $("#checkin_equipment_id_input").val();
   var datereturn = $("#checkin_datein_id_input").val();
 
-  var theUrl="../controller/ajax-action.php?cmd=1&equipment="+equipment+"&return="+datereturn;
+  var theUrl="../controller/ajax-action.php?cmd=2&equipment="+equipment+"&return="+datereturn;
 // alert(theUrl);
 var obj=sendRequest(theUrl);		//send request to the above url
 // alert(obj.result);

@@ -53,7 +53,7 @@
     include ("../model/transaction.php");
     $obj = new transaction();
     $equipment = $_REQUEST['equipment'];
-    $to_return = $_REQUEST['return'];
+    $date_returned = $_REQUEST['return'];
 
     if(verify_equipment_helper($equipment)){
         if($obj->check_in_equipment($equipment, $date_returned)){
@@ -64,7 +64,7 @@
         }
       }
     }
-  }
+
 
   /**
    * [[The verify_equipment_helper is a helper function to verify that an equipment exists before
