@@ -52,13 +52,10 @@
   function check_in_equipment_cmd(){
     include ("../model/transaction.php");
     $obj = new transaction();
-    $user = $_REQUEST['user'];
     $equipment = $_REQUEST['equipment'];
-    $borrowed = $_REQUEST['borrowed'];
     $to_return = $_REQUEST['return'];
 
     if(verify_equipment_helper($equipment)){
-      if(verify_user_helper($user)){
         if($obj->check_in_equipment($equipment, $date_returned)){
           echo '{"result":1,"message": "checked in successfully"}';
         }
