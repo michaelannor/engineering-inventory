@@ -1,8 +1,8 @@
 <?php
 
 /**
- * author: 
- * date:
+ * author: Daniel Bonsu 
+ * date: 25 November 2015
  * description: A root class for all manage classes. This class communicates with DB
  */
 

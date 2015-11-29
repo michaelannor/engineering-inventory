@@ -1,4 +1,7 @@
-
+/*author : Daniel Bonsu
+* Javascript file contains send request and script function
+*/
+  
   function sendRequest(u)
   {
   // Send request to server
@@ -12,19 +15,19 @@
 
   function viewEquipment()
   {
-    // var
-    var equipmentid = id;
+    //var equipmentid = id;
     var theUrl = "../control.php?cmd=1";  
     var obj=sendRequest(theUrl);    //send request to the above url
   
   if(obj.result==1){          //check result
     
     var equipment_list;
+        
         //check result
-        equipment_list = "<table class='' width=100%><thead><tr><th>EquipmentId</th><th>EquipmentName</th><th>SupplierName</th><th>LabId</th><th>SafetyRequirement</th>";
-        equipment_list += "</tr></thead><tbody id='equipment_list_ul' class=''>";
+        equipment_list = "<table class='reportTable' width=100%><thead><tr><th>EquipmentId</th><th>EquipmentName</th><th>SupplierName</th><th>LabId</th><th>SafetyRequirement</th>";
+        equipment_list += "</tr></thead><tbody id='content' class='reportTable'>";
         for (var i = 0; i < obj.Equipment.length; i++) {
-          var id = obj.Equipment[i].product_id;
+          var id = obj.Equipment[i].equipment_id;
           equipment_list += "<tr><td>";
           equipment_list += obj.Equipment[i].equipment_name;
           equipment_list += "</td><td> "+obj.Equipment[i].equipment_id+"</td><td>";
@@ -46,15 +49,45 @@
   }
 }
 
+function viewDescription(id)
+  {
+    var equipmentid = id;
+    var theUrl = "../control.php?cmd=2&id="+equipmentid;  
+    var obj=sendRequest(theUrl);    //send request to the above url
+  
+  if(obj.result==1){          //check result
+    
+    var description;
+        
+        //check result
+        equipment_list = "<table class='reportTable' width=100%><thead><tr><th>EquipmentId</th><th>EquipmentName</th><th>SupplierName</th><th>LabId</th><th>SafetyRequirement</th>";
+        equipment_list += "</tr></thead><tbody id='content' class='reportTable'>";
+      
+          var id = obj.Equipment[id].equipment_description;
+
+          
+        $("#maincontent").html(description);
+        // $("#pagetitle").html("Product List");
+
+    // $("#simulateClick").trigger("click");
+  }else{
+      //show error message
+      alert("error: couldn't fetch products");//err
+  }
+}
+
+
 $(function(){
 
   $("#viewallbtn").click(function(){
     viewEquipment();
   });
 });
-  
 
-  // }
+$(function(){
 
-  // </script> 
+  $("#viewdescbtn").click(function(){
+    viewDescription();
+  });
+});
 

@@ -13,48 +13,20 @@ include_once ("adb.php");
 * Returns all equipment from database
 *@return $this->fetch: this returns the result of the query if true
 */ 
-
   function viewEquipment()
   {
     $query = "select * from se_inventory_equipment";
     return$this->query($query);
-    // return $this->fetch();
   }
 
-    
-  //   $length=$this->get_num_rows();
-  //   $row =$this->fetch();
+function viewDescription($id)
+{
+$query = "select equipment_description from se_inventory_equipment where
+equipment_id = '$id'";
+$this->query($query);
+return $this->fetch();
+}
 
-  //   echo "<table style='border: solid 2px'>
-  //   <thead>
-  //   <tr>
-  //   <th>ID</th>
-  //   <th>Name</th>
-  //   <th>Manufacturer</th>
-  //   <th>Supplier</th>
-  //   <th>Lab</th>
-  //   <th>Safety Requirement</th>
-  //   </tr>
-  //   </thead>";
-
-  // for($i=0;$i<$length;$i++)
-  // {
-  //   echo "<tbody>";
-  //   echo "<tr>";
-  //   echo "<td class='t'>{$row['equipment_id']}</td>";
-  //   echo "<td class='t'>{$row['equipment_name']}</td>";
-  //   echo "<td class='t'>{$row['manufacturer_name']}</td>";
-  //   echo "<td class='t'>{$row['supplier_name']}</td>";
-  //   echo "<td class='t'>{$row['laboratory_id']}</td>";
-  //   echo "<td class='t'>{$row['safety_requirement']}</td>";
-  //   echo "</tr>";
-
-  //   $row = $this->fetch();
-
-  // }
-  //   echo "</tbody>";
-  //   echo "</table>";
-  // }
 }
 
 ?>

@@ -19,7 +19,11 @@ if (!isset($_REQUEST['cmd']))
   case 1:
   viewEquipment();	
   break;
-// 2
+ 
+  case 2:
+  viewDescription();  
+  break;
+
   default:
   echo '{"result":0,"message":"unknown command"}';
   break;
@@ -51,8 +55,35 @@ if ($equipment)
 }
 else
 {
-  echo '{"result":0,"message": "no equipment"}';
+  echo '{"result":0,"message": "no des"}';
 }
 
 }
+
+function viewDescription($id)
+{
+    include("equipment.php");
+    $obj=new equipment();
+    $id = $_REQUEST['id'];
+    if($obj->viewDescription($id)){
+    $description = $obj->viewDescription($id);
+    $json = '{"result":1, "Description":[';
+    while ($description)
+    {
+      echo json_encode($description);
+      $description = $obj->fetch();
+
+    if ($description){
+echo ",";
+}
+
+}
+  echo "]}";                        
+}
+else
+{
+  echo '{"result":0,"message": "no description"}';
+}
+}
+
 ?>
