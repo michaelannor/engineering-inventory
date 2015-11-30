@@ -21,10 +21,6 @@ if (!isset($_REQUEST['cmd']))
   break;
  
   case 2:
-  viewDescription();  
-  break;
-
-  case 3
   viewLabs();
   break;
 
@@ -64,20 +60,21 @@ else
 
 }
 
-function viewDescription()
-{
-    include("equipment.php");
-    $obj=new equipment();
-    $id = $_REQUEST['id'];
-    if($obj->viewDescription($id)){
-    $description = $obj->viewDescription($id);
-    $json = '{"result":1, "Description":[';
-    while ($description)
-    {
-      echo json_encode($description);
-      $description = $obj->fetch();
+function viewLabs(){
+include("equipment.php");
+$obj = new equipment();
+$id = $_REQUEST['id'];
+if($obj->viewLabs($id)){
+    $labs = $obj->viewLabs($id);
+    $json = '{"result":1, "Labs":[';
+    echo $json;
 
-    if ($description){
+   while ($labs)
+    {
+     echo json_encode($labs);
+      $labs = $obj->fetch(); 
+
+      if ($labs){
 echo ",";
 }
 
@@ -86,7 +83,7 @@ echo ",";
 }
 else
 {
-  echo '{"result":0,"message": "no description"}';
+  echo '{"result":0,"message": "no labs"}';
 }
 }
 
