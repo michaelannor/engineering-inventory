@@ -60,7 +60,7 @@ else
 
 }
 
-function viewDescription($id)
+function viewDescription()
 {
     include("equipment.php");
     $obj=new equipment();
