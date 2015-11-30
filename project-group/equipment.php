@@ -27,6 +27,11 @@ $this->query($query);
 return $this->fetch();
 }
 
+function viewLabs($id)
+{
+  $query = "select * from se_inventory_equipment, se_inventory_labs where se_inventory_equipment.laboratory_id = se_inventory_labs.lab_id AND se_inventory_equipment.laboratory_id = '$id'";
+}
+
 }
 
 ?>

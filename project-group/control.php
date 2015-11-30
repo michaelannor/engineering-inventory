@@ -24,6 +24,10 @@ if (!isset($_REQUEST['cmd']))
   viewDescription();  
   break;
 
+  case 3
+  viewLabs();
+  break;
+
   default:
   echo '{"result":0,"message":"unknown command"}';
   break;
