@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `se_inventory_equipment` (
   `manufacturer_name` varchar(100) NOT NULL,
   `supplier_name` varchar(100) NOT NULL,
   `laboratory_id` int(10) NOT NULL,
+  `purchase_date` date ,
   `safety_requirement` varchar(100) NOT NULL,
   PRIMARY KEY (`equipment_id`),
   KEY `laboratory_id` (`laboratory_id`),
