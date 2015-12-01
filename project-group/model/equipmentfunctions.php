@@ -12,9 +12,10 @@
 	*@param string $supplier  supplier of equipment
 	*@param integer $lab_id lab  where equipment belong
 	*@param string $safety_requirement the safety requirement of equipment
+	*@param date $purchase_date date when equipment was purchased
     **/
-	    function add_equipment($name,$id,$manufacturer,$supplier,$lab_id,$safety_requirement){
-	        $str_query="INSERT INTO se_inventory_equipment set equipment_id=$id,equipment_name='$name',manufacturer_name='$manufacturer', supplier_name='$supplier', laboratrory_id=$lab_id,safety_requirement='$safety_requirement'";
+	    function add_equipment($name,$id,$manufacturer,$supplier,$lab_id,$purchase_date,$safety_requirement){
+	        $str_query="INSERT INTO se_inventory_equipment set equipment_id=$id,equipment_name='$name',manufacturer_name='$manufacturer', supplier_name='$supplier', laboratrory_id=$lab_id,purchase_date='$purchase_date',safety_requirement='$safety_requirement'";
 	        return $this->query($str_query).mysql_error();
 	    }
 	
