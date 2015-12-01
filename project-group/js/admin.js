@@ -67,6 +67,7 @@ function view_add_equipment(){
    content += "<div class='form-group'><label for='manufacturer'> Manufacturer Name</label><input type='text' id='dc' class='form-control' placeholder='Enter Manufacturer Name' required></div> ";
    content += "<div class='form-group'><label for='supplier'> Supplier Name </label><input type='text' id='pr'class='form-control'placeholder='Enter Supplier Name' required></div> ";
    content += "<div class='form-group'><label for='lab'>LabID</label><input type='text' id='lb'class='form-control' placeholder='Enter Lab ID'  required></div>";
+   content +="<div class='form-group'><label for=date>Purchase Date</label><input type='date' id='pd' class='form-control' placeholder='Enter Date' required></div>";
    content += "<div class='form-group'><label for='safety'> Safety Requirement</label><input type='text' id='sf' class='form-control' placeholder='Enter Safety Requirement' required></div>";
    content += "<button id='add_equipment_btn' onclick='add_equipment()' class='btn btn-primary btn-lg btn-block' > Add </button>";
    $("#main-content").html(content);
@@ -120,9 +121,10 @@ function add_equipment() {
    var  manufacturer = $("#dc").val();
    var supplier = $("#pr").val();
    var lab_id = $("#lb").val();
+   var purchase_date=$("#pd").val();
    var safety_requirement = $("#sf").val();
 
-   var theUrl="../controller/ajax-action.php?cmd=2&nm="+equipment+"&tp="+id+"&dc="+manufacturer+"&pr="+supplier+"&lb="+lab_id+"&sf="+safety_requirement;
+   var theUrl="../controller/ajax-action.php?cmd=2&nm="+equipment+"&tp="+id+"&dc="+manufacturer+"&pr="+supplier+"&lb="+lab_id+"&pd="+purchase_date+"&sf="+safety_requirement;
    // alert(theUrl);
    var obj=sendRequest(theUrl);		//send request to the above url
    // alert(obj.result);
