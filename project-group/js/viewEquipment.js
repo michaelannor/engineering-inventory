@@ -16,6 +16,8 @@ function sendRequest(u){
 
 
 //on click runs the function
+
+
 $(function(){
   $("#viewallbtn").click(function(){
     viewEquipment();
@@ -52,6 +54,8 @@ $(function(){
     viewLabs(4);
   });
 });
+
+
 
 
 $(function() {
@@ -142,11 +146,10 @@ $(function() {
 }
 
 function viewLabs(id){
- console.log(id);
+
 var theUrl = "../control.php?cmd=2&id="+id;  
-console.log(theUrl);
-    var obj=sendRequest(theUrl);    //send request to the above url
-  console.log(obj.Labs.length);
+var obj=sendRequest(theUrl);    //send request to the above url
+
   if(obj.result==1 ){          //check result
     
     var equipment_list;

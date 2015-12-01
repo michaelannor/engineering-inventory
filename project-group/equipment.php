@@ -22,7 +22,7 @@ include_once ("adb.php");
 
 function viewLabs($id)
 {
-  $query = "select distinct * from se_inventory_equipment, se_inventory_labs where se_inventory_equipment.laboratory_id = se_inventory_labs.lab_id AND se_inventory_equipment.laboratory_id = '$id'";
+  $query = "select * from se_inventory_equipment, se_inventory_labs where se_inventory_equipment.laboratory_id = se_inventory_labs.lab_id AND se_inventory_equipment.laboratory_id = '$id'";
     return$this->query($query);
 }
 }
