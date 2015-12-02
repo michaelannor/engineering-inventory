@@ -135,13 +135,14 @@
 	function generate_purchase_report_cmd(){
 		include_once("../model/equipmentfunctions.php");
 	    $obj=new equipmentfunctions();
-		if($obj->viewEquipment()){
+		if($obj->generate_purchase_report()){
             $report = $obj->fetch();
-            $json = '{"result":1,"Purchased Equipment":[';
+            $json = '{"result":1,"equipmentfunctions":[';
+			echo $json;
             while($report){
                 echo json_encode($report);         
                 $report=$obj->fetch();
-                if ($equipment){
+                if ($report){
                     echo ",";
                 }
             }

@@ -135,7 +135,7 @@ function add_equipment() {
    var lab_id = $("#lb").val();
    var safety_requirement = $("#sf").val();
 
-   var theUrl="../controller/ajax-action.php?cmd=2&nm="+equipment+"&tp="+id+"&dc="+manufacturer+"&pr="+supplier+"&lb="+lab_id+"&sf="+safety_requirement;
+   var theUrl="http://localhost:8080/webtech/git/engineering-inventory/project-group/controller/ajax-action.php?cmd=2&nm="+equipment+"&tp="+id+"&dc="+manufacturer+"&pr="+supplier+"&lb="+lab_id+"&sf="+safety_requirement;
    // alert(theUrl);
    var obj=sendRequest(theUrl);		//send request to the above url
    // alert(obj.result);
@@ -164,7 +164,7 @@ function log_equipment_fault() {
    var description = $("#dp").val();
    var date = $("#dt").val();
 
-   var theUrl="../controller/ajax-action.php?cmd=3&nm="+equipment+"&lb="+lab_id+"&dp="+description+"&dt="+date;
+   var theUrl="http://localhost:8080/webtech/git/engineering-inventory/project-group/controller/ajax-action.php?cmd=3&nm="+equipment+"&tp="+id+"&lb="+lab_id+"&dp="+description+"&dt="+date;
    // alert(theUrl);
    var obj=sendRequest(theUrl);		//send request to the above url
    // alert(obj.result);
@@ -182,6 +182,54 @@ function log_equipment_fault() {
 
     }
 }
+function generate_purchase_report(){
+	//var equipmentid = id;
+   var theUrl = "http://localhost:8080/webtech/git/engineering-inventory/project-group/controller/ajax-action.php?cmd=4";  
+   var obj=sendRequest(theUrl);    //send request to the above url
+ 
+  if(obj.result==1){          //check result
+    
+    var purchase_list;
+       //check result
+      purchase_list= "<table class='' width=100%><thead><tr><th>Equipment Name</th><th>Equipment ID</th><th><th>Manufacturer</th><th>Supplier</th><th>Lab ID</th><th>Purchase Date<th>SafetyRequirement</th>";
+      purchase_list += "</tr></thead><tbody>";
+       for (var i = 0; i < obj.equipmentfunctions.length; i++) {
+          var id = obj.equipmentfunctions[i].product_id;
+         purchase_list += "<tr><td>";
+          purchase_list+= obj.equipmentfunctions[i].equipment_name;
+         purchase_list+= "</td><td> "+obj.equipmentfunctions[i].equipment_id+"</td><td>";
+         purchase_list += obj.equipmentfunctions[i].manufacturer_name;
+         purchase_list += "</td>";
+        purchase_list += "<td>";
+         purchase_list += obj.equipmentfunctions[i].supplier_name;
+         purchase_list += "</td><td>"+obj.equipmentfunctions[i].laboratory_id+"</td><td>";
+		  purchase_list +=obj.equipmentfunctions[i].purchase_date;
+		  purchase_list += "</td>";
+        purchase_list += "<td>";
+		purchase_list+=obj.equipmentfunctions[i].safety_requirement;
+		purchase_list+="</td>";
+        purchase_list += "</tr>";
+       }
+       purchase_list += "</tbody></table>";
+
+       // alert(equipment_list);
+       $("#main-content").html(purchase_list);
+       // $("#pagetitle").html("Product List");
+
+   // $("#simulateClick").trigger("click");
+  }else{
+     //show error message
+     alert("error: couldn't fetch products");//err
+  }
+}
+$(function(){
+
+ $("#menu2").click(function(){
+// alert();
+  generate_purchase_report();
+ });
+});
+
 
 /*
 * a method that calls check_out_click() 
