@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `se_inventory_faults` (
   `equipment_name` varchar(100) NOT NULL,
   `laboratory_id` int(10) NOT NULL,
   `description` varchar(250) NOT NULL,
-  `date_of_damage` date NOT NULL,
+  `date_of_damage` date NOT NULL
   ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
