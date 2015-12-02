@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `se_inventory_users` (
   UNIQUE KEY `user_name` (`user_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
---Table structure for table `safety_requirement`
+--Table structure for table `se_inventory_faults`
 --
 CREATE TABLE IF NOT EXISTS `se_inventory_faults` (
   `equipment_id` int(10) NOT NULL PRIMARY KEY,
