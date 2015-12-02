@@ -23,6 +23,9 @@
 		case 3:
 		log_equipment_fault_cmd();
 		break;
+		case 4:
+		generate_purchase_report_cmd();
+		break;
         default:
         echo '{"result":0,message:"unknown command"}';
         break;
@@ -126,5 +129,27 @@
         }
 	
     }
+	/**
+	 *@method generate_purchase_report_cmd() a command for fetching all purchased equipment
+	 */
+	function generate_purchase_report_cmd(){
+		include_once("../model/equipmentfunctions.php");
+	    $obj=new equipmentfunctions();
+		if($obj->viewEquipment()){
+            $report = $obj->fetch();
+            $json = '{"result":1,"Purchased Equipment":[';
+            while($report){
+                echo json_encode($report);         
+                $report=$obj->fetch();
+                if ($equipment){
+                    echo ",";
+                }
+            }
+            echo "]}";                        
+        }      
+        else{
+            echo '{"result":0,"message": "no equipment"}';
+        }
+	}
 
 ?>
