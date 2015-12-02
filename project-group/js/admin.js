@@ -182,6 +182,7 @@ function log_equipment_fault() {
 
     }
 }
+
 /*
 * a method that calls check_out_click() 
 */
@@ -215,17 +216,11 @@ function add_equipment_click(){
 * a method that calls log_equipment_fault_click() 
 */
 $(function(){
-  log_equipment_fault_click();
+	$("#menu1").click(function(){
+		view_log_equipment_fault();
+	}
+	);
 });
-/*
-*@method log_equipment_fault_click() calls view_log_equipment_fault() method when an log equipment fault image  is clicked
-*/
-function log_equipment_fault_click();{
-	/*$("#an image").click(function(){
-		view_add_equipment();
-	});
-	*/
-}
 
 
 /*
