@@ -6,7 +6,7 @@
 */
 
 /**
-* Process Ajax 
+* Process Ajax Request
 */
 if (!isset($_REQUEST['cmd']))
 {
@@ -14,6 +14,10 @@ if (!isset($_REQUEST['cmd']))
   exit();
 }
 
+   /**
+   * @method switch($cmd) it has cases of different commands
+   * @param integer $cmd an number that represents different switch cases
+   */
   $cmd=$_REQUEST['cmd'];
   switch ($cmd) {
   case 1:
@@ -29,8 +33,9 @@ if (!isset($_REQUEST['cmd']))
   break;
 
 }
+
 /**
-* Shows one equipment from the database 
+* Displays all equipment collected from the database 
 */   
 function viewEquipment()
 {
@@ -55,11 +60,14 @@ if ($equipment)
 }
 else
 {
-  echo '{"result":0,"message": "no des"}';
+  echo '{"result":0,"message": "no equipment"}';
 }
 
 }
 
+/**
+* Displays all equipment collected from specific labs collected from the database 
+*/ 
 function viewLabs(){
 include("equipment.php");
 $obj = new equipment();

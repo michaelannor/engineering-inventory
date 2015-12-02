@@ -1,120 +1,140 @@
+/**
+ * @file 
+ * 1.1 Formatted version of the javascript code that contains view functions and accompanying button clicks.
+ *
+ */
+
+
 $(document).ready(viewHome());
 
+/*
+*@method viewHome() a view that displays all the contents in the user interface
+*/
 function viewHome(){
 }
 
+/*
+*@method sendRequest(u) sends request to server
+*@param{string} u a url as a string
+*/
 function sendRequest(u){
-    // Send request to server
-    //u a url as a string
-    //async is type of request
-    // alert(u);
+  
     var obj=$.ajax({url:u,async:false});
-    //Convert the JSON string to object
     var result=$.parseJSON(obj.responseText);
-    return result;	//return object
+    return result;	
 }
 
-
-//on click runs the function
-
-
+/*
+*@method button click calls viewEquipment() method 
+*/
 $(function(){
   $("#viewallbtn").click(function(){
     viewEquipment();
   });
 });
 
+/*
+*@method button click calls viewLabs() method 
+*/
   $(function(){
-
   $("#electronicslab").click(function(){
     viewLabs(1);
   });
 });
 
-    $(function(){
-
+/*
+*@method button click calls viewLabs() method 
+*/
+  $(function(){
   $("#designlab").click(function(){
-    // alert();
     viewLabs(2);
   });
 });
 
+/*
+*@method button click calls viewLabs() method 
+*/
 $(function(){
-
   $("#roboticslab").click(function(){
-    // alert();
     viewLabs(3);
   });
 });
 
+/*
+*@method button click calls viewLabs() method 
+*/
   $(function(){
-
   $("#sciencelab").click(function(){
-    // alert();
     viewLabs(4);
   });
 });
 
-
-
-
+/*
+*@method a method that displays a hover effect
+*/
 $(function() {
     $("#la-img").mouseover(function() {
-            // var src = $(this).attr("src").match(/[^\.]+/) + "2.png";
             $(this).attr("src", "../media/la2.png");
         })
         .mouseout(function() {
-            // var src = $(this).attr("src").replace("../media/la.png", ".png");
             $(this).attr("src", "../media/la.png");
         });
 });
 
+
+/*
+*@method a method that displays a hover effect
+*/
 $(function() {
     $("#ad-img")
         .mouseover(function() {
-            // var src = $(this).attr("src").match(/[^\.]+/) + "2.png";
             $(this).attr("src", "../media/ad2.png");
         })
         .mouseout(function() {
-            // var src = $(this).attr("src").replace("../media/la.png", ".png");
             $(this).attr("src", "../media/ad.png");
         });
 });
 
+
+/*
+*@method a method that displays a hover effect
+*/
 $(function() {
     $("#ci-img")
         .mouseover(function() {
-            // var src = $(this).attr("src").match(/[^\.]+/) + "2.png";
             $(this).attr("src", "../media/ci2.png");
         })
         .mouseout(function() {
-            // var src = $(this).attr("src").replace("../media/la.png", ".png");
             $(this).attr("src", "../media/ci.png");
         });
 });
 
+
+/*
+*@method a method that displays a hover effect
+*/
 $(function() {
     $("#co-img")
         .mouseover(function() {
-            // var src = $(this).attr("src").match(/[^\.]+/) + "2.png";
             $(this).attr("src", "../media/co2.png");
         })
         .mouseout(function() {
-            // var src = $(this).attr("src").replace("../media/la.png", ".png");
             $(this).attr("src", "../media/co.png");
         });
 });
 
 
+/*
+*@method viewEquipment() displays all equipment listed in database
+*/
   function viewEquipment()
   {
     var theUrl = "../control.php?cmd=1";  
-    var obj=sendRequest(theUrl);    //send request to the above url
-  
-  if(obj.result==1){          //check result
+    var obj=sendRequest(theUrl);   
+  if(obj.result==1){         
     
     var equipment_list;
-        //check result
+       
         equipment_list = "<table class='table table-striped' width=100%><thead><tr><th>EquipmentId</th><th>EquipmentName</th><th>SupplierName</th><th>LabId</th><th>Safety Requirement</th>";
         equipment_list += "</tr></thead><tbody id='equipment_list_ul' class=''>";
         for (var i = 0; i < obj.Equipment.length; i++) {
@@ -134,26 +154,27 @@ $(function() {
         }
         equipment_list += "</tbody></table>";
 
-        // alert(equipment_list);
-        $("#main-content").html(equipment_list);
-        // $("#pagetitle").html("Product List");
-
-    // $("#simulateClick").trigger("click");
+       $("#main-content").html(equipment_list);
+     
   }else{
-      //show error message
-      alert("error: couldn't fetch products");//err
+     
+      alert("error: couldn't fetch equipment");
   }
 }
 
+/*
+*@method viewLabs(id) displays equipment in specific labs identified by id
+*@param {integer} id id of a specific lab
+*/
 function viewLabs(id){
 
 var theUrl = "../control.php?cmd=2&id="+id;  
-var obj=sendRequest(theUrl);    //send request to the above url
+var obj=sendRequest(theUrl);    
 
-  if(obj.result==1 ){          //check result
+  if(obj.result==1 ){          
     
     var equipment_list;
-        //check result
+      
         equipment_list = "<table class='table table-striped' width=100%><thead><tr><th>EquipmentId</th><th>EquipmentName</th><th>ManuafcturerName</th><th>SupplierName</th><th>Safety Requirement</th>";
         equipment_list += "</tr></thead><tbody id='equipment_list_ul' class=''>";
         for (var i = 1; i < obj.Labs.length; i++) {
@@ -166,26 +187,18 @@ var obj=sendRequest(theUrl);    //send request to the above url
           equipment_list += "<td>";
           equipment_list += obj.Labs[i].supplier_name;
           equipment_list += "</td><td> "+obj.Labs[i].safety_requirement+"</td>";
-          equipment_list += "<td><button type= 'button' class='btn btn-primary btn-lg' data-toggle='modal' data-target='#myModal"+id+"'>View Description</button><div class='modal fade' id='myModal"+id+"' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'><div class='modal-dialog' role='document'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button><h4 class='modal-title' id='myModalLabel'>Equipment Description</h4></div><div class='modal-body'>"+obj.Labs[i].equipment_description+"</div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button></div></div></div></div>    </td><td>";
+          equipment_list += "<td><button type= 'button' class='btn btn-primary btn-lg' data-toggle='modal' data-target='#myModal"+id+"'>View Description</button><div class='modal fade' id='myModal"+id+"' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'><div class='modal-dialog' role='document'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button><h4 class='modal-title' id='myModalLabel'>Equipment Description</h4></div><div class='modal-body'>"+obj.Labs[i].equipment_description+"</div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button></div></div></div></div></td><td>";
           equipment_list += "</td>";
           equipment_list += "</tr>";
 
         }
         equipment_list += "</tbody></table>";
 
-        // alert(equipment_list);
         $("#main-content").html(equipment_list);
-        // $("#pagetitle").html("Product List");
-
-    // $("#simulateClick").trigger("click");
   }
   else{
-      //show error message
-      alert("error: couldn't fetch products");//err
+      alert("error: couldn't fetch equipment");
   }
-
-
-
 }
 
 
