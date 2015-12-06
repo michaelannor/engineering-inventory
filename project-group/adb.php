@@ -1,10 +1,10 @@
 <?php
-
 /**
- * author: Daniel Bonsu 
- * date: 25 November 2015
- * description: A root class for all manage classes. This class communicates with DB
- */
+* @author Daniel Bonsu
+* @version 1.1 A root class for all manage classes. This class communicates with DB
+*/
+
+
 
 define("DB_HOST", 'localhost');
 define("DB_NAME", 'se_inventory');
@@ -53,8 +53,8 @@ class adb {
         }
 
         //display this code to user
-        $this->error="$er_code-$log_id";
-        return $log_id;
+            $this->error="$er_code-$log_id";
+            return $log_id;
     }
 
     /**
@@ -75,22 +75,24 @@ class adb {
             $this->log_error(LOG_LEVEL_DB_FAIL,1, "connection failed  in db:connect()", mysql_error());
             return false;
         }
+
 		//echo "connected";
         if (!mysql_select_db(DB_NAME)) {
             
-            $log_id = $this->log_error(LOG_LEVEL_DB_FAIL,2, "select db failed   in db:connect()", mysql_error($this->link));
+            $log_id = $this->log_error(LOG_LEVEL_DB_FAIL,2, "select db failed in db:connect()", mysql_error($this->link));
             return false;
         }
 
-        return true;
+            return true;
     }
 
         
 	/**
 	*returns a row from a data set
 	*/
-    function fetch() {
-        return mysql_fetch_assoc($this->result);
+    function fetch() 
+    {
+           return mysql_fetch_assoc($this->result);
     }
 
     /**

@@ -4,12 +4,10 @@
  *
  */
 
-
 $(document).ready(viewHome());
 
-/*
-*@method viewHome() a view that displays all the contents in the user interface
-*/
+
+//@method viewHome() a view that displays all the contents in the user interface
 function viewHome(){
 }
 
@@ -24,54 +22,54 @@ function sendRequest(u){
     return result;	
 }
 
-/*
-*@method button click calls viewEquipment() method 
-*/
+
+//@method button click calls viewEquipment() method 
+
 $(function(){
   $("#viewallbtn").click(function(){
     viewEquipment();
   });
 });
 
-/*
-*@method button click calls viewLabs() method 
-*/
+
+//@method button click calls viewLabs() method 
+
   $(function(){
   $("#electronicslab").click(function(){
     viewLabs(1);
   });
 });
 
-/*
-*@method button click calls viewLabs() method 
-*/
+
+//@method button click calls viewLabs() method 
+
   $(function(){
   $("#designlab").click(function(){
     viewLabs(2);
   });
 });
 
-/*
-*@method button click calls viewLabs() method 
-*/
+
+//@method button click calls viewLabs() method 
+
 $(function(){
   $("#roboticslab").click(function(){
     viewLabs(3);
   });
 });
 
-/*
-*@method button click calls viewLabs() method 
-*/
+
+//@method button click calls viewLabs() method 
+
   $(function(){
   $("#sciencelab").click(function(){
     viewLabs(4);
   });
 });
 
-/*
-*@method a method that displays a hover effect
-*/
+
+//@method a method that displays a hover effect
+
 $(function() {
     $("#la-img").mouseover(function() {
             $(this).attr("src", "../media/la2.png");
@@ -82,9 +80,9 @@ $(function() {
 });
 
 
-/*
-*@method a method that displays a hover effect
-*/
+
+//@method a method that displays a hover effect
+
 $(function() {
     $("#ad-img")
         .mouseover(function() {
@@ -96,9 +94,9 @@ $(function() {
 });
 
 
-/*
-*@method a method that displays a hover effect
-*/
+
+//@method a method that displays a hover effect
+
 $(function() {
     $("#ci-img")
         .mouseover(function() {
@@ -110,9 +108,9 @@ $(function() {
 });
 
 
-/*
-*@method a method that displays a hover effect
-*/
+
+//@method a method that displays a hover effect
+
 $(function() {
     $("#co-img")
         .mouseover(function() {
@@ -124,9 +122,9 @@ $(function() {
 });
 
 
-/*
-*@method viewEquipment() displays all equipment listed in database
-*/
+
+//method viewEquipment() displays all equipment listed in database
+
   function viewEquipment()
   {
     var theUrl = "../control.php?cmd=1";  
