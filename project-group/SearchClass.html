@@ -1,5 +1,8 @@
 <html>
 <body>
+	/*
+	@author: Chuma Amazigo
+	*/
 /*
 @param mixed[] form: This is a form that allows the user to input equipment name, the view the user sees
 		*/
@@ -15,7 +18,7 @@ Search Text:<input type="text" size="30" name="st">
 
 if(isset($_REQUEST['st'])){
 	include_once("GpSearch.php");
-	$obj=new GManu();
+	$obj=new GSearch();
 	$search_text=$_REQUEST['st'];
 /*
 @param mixed[] The search is found and ready for display
@@ -27,18 +30,15 @@ if(isset($_REQUEST['st'])){
 @param mixed[] The table to display equipment to the user
 */
 	echo "<table border='1'>";
-echo"<tr><td>Equipment_ID</td><td>Equipment_Name</td><td>Delete</td>
-<td>Edit</td></tr>";
+echo"<tr><td>Equipment_ID</td><td>Equipment_Name</td>";
 $row=$obj->fetch();
-while($row){
-	echo "<tr><td> ".$row['Equipment_ID']."</td><td><a href=View_GpManu.php?id=".$row['Equipment_ID'].">
-	".$row['Manufacturer_Name']."</a></td><td><a href=delete_equipment.php?id=".$row['Manufacturer_ID'].">delete</a>
-	</td><td><a href=update_equipment.php?id=".$row['Equipment_ID'].">edit</a> </td></tr>";
++while($row){
+	echo "<tr><td> ".$row['equipment_id']."</td>""<tr><td> ".$row['equipment_name']."</td>";
     $row=$obj->fetch();
 }
 	
 }
 ?>
 
-</body>
-</html>
++</body>
++</html>
