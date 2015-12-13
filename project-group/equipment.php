@@ -2,7 +2,10 @@
 
 /**
 * @author Daniel Bonsu
-* @version 1.1 Formatted version of PHP code that contains user functions for inventory equipment.
+* @version 2.0 Formatted version of PHP code that contains user functions for inventory equipment.
+* 
+* This class below contains functions that interface with database
+* via MYSQL
 */
 
     include_once ("adb.php");
