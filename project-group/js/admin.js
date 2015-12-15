@@ -44,6 +44,19 @@ function view_check_out_equipment() {
 
 }
 
+function view_check_in_equipment() {
+  var content = "";
+
+  content += "<div class='form col-md-12 center-block'><div class='form-group'><label for='checkin_equipment_id_input'>Equipment ID</label>";
+  content += "<input id='checkin_equipment_id_input' type='text' class='form-control input-lg' placeholder='Equipment ID'></div>";
+  content += "<div class='form-group'><label for='checkin_datein_id_input'>Return Date:</label><input id='checkin_datein_id_input' type='date' ";
+  content += "class='form-control input-lg' placeholder='YYYY-MM-DD'>";
+  content += "</div><div class='form-group'><button id='checkinbtn' onclick='check_in_equipment()' class='btn btn-primary btn-lg btn-block'>Check In</button></div><br><hr></div>";
+
+  $("#main-content").html(content);
+
+}
+
 function sendRequest(u){
     // Send request to server
     //u a url as a string
@@ -81,13 +94,44 @@ else {
 }
 }
 
+function check_in_equipment() {
+  var equipment = $("#checkin_equipment_id_input").val();
+  var datereturn = $("#checkin_datein_id_input").val();
+
+  var theUrl="../controller/ajax-action.php?cmd=2&equipment="+equipment+"&return="+datereturn;
+// alert(theUrl);
+var obj=sendRequest(theUrl);		//send request to the above url
+// alert(obj.result);
+var status = "";
+if(obj.result==1){					//check result
+status += "<div  class='alert alert-success alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Success!</strong> Checkin Successful</div>";
+  viewHome();
+  check_out_hover();
+  check_out_click();
+  // location.reload(); //Find a better solution
+  $("#divstatus").html(status);
+}
+else {
+  status += "<div  class='alert alert-warning alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Warning!</strong> Couldn't Checkin Equipment</div>";
+    $("#divstatus").html(status);
+
+}
+}
+
 $(function(){
   check_out_click();
+  check_in_click();
 });
 
 function check_out_click() {
   $("#co-img").click(function(){
     view_check_out_equipment();
+  });
+}
+
+function check_in_click() {
+  $("#ci-img").click(function(){
+    view_check_in_equipment();
   });
 }
 
