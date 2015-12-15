@@ -29,7 +29,8 @@ class transaction extends adb {
  * @param [[date_returned]]
  */
   function check_in_equipment($equipment, $date_returned){
-    # code...
+    $str_query = "update se_inventory_transaction set date_returned='$date_returned' where equipment_id='$equipment' and date_returned=NULL";
+    return $this->query($str_query);
   }
 
 /**
