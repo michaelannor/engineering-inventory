@@ -24,6 +24,15 @@ class user extends adb {
     }
   }
 
+  /**
+   * [[The verify_user function checks if a user exists]]
+   * @param [[int]] $user
+   */
+   function login($username, $password){
+       $str_query="SELECT user_name, user_group from se_inventory_users where user_name='$username' and password='$password'";
+         return $this->query($str_query);
+     }
+
 
 }
 

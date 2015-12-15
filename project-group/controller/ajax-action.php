@@ -16,9 +16,34 @@
       check_in_equipment_cmd();
       break;
 
+    case 3:
+      login_cmd();
+      break;
+
     default:
       # code...
       break;
+  }
+
+  function login_cmd(){
+    include ("../model/user.php");
+    $obj = new user();
+    $user = $_REQUEST['user'];
+    $pass = $_REQUEST['pass'];
+    if($obj->login($user, $pass)){
+      $row = $obj->fetch();
+      // echos $row;
+      if ($row['user_name'] == false){
+        echo '{"result":0,"message": "wrong login credentials."}';
+      }else if ($row['user_name'] == true) {
+        //generate the JSON message to echo to the browser
+          echo '{"result":1,"username":';	//start of json object
+          echo json_encode($row['user_name']);			//convert the result array to json object
+          echo ',"usergroup":';	//start of json object
+          echo json_encode($row['user_group']);			//convert the result array to json object
+          echo "}";							//end of json array and object
+      }
+    }
   }
 
   /**
