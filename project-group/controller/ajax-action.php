@@ -1,7 +1,7 @@
 <?php
 
 /**
- * author: Michael Annor
+ * @author: Michael Annor
  * date: 15th November, 2015
  * description: ajax-action page, interfaces with javascript to process commands from the frontend
  */
@@ -25,6 +25,10 @@
       break;
   }
 
+  /**
+   * [[The login_cmd function is to validate and grant a user access to the system
+   * when called from the view]]
+   */
   function login_cmd(){
     include ("../model/user.php");
     $obj = new user();
