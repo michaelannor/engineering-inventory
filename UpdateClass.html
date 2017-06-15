@@ -1,0 +1,44 @@
+<html>
+<body>
+	/*
+	@author: Chuma Amazigo
+	*/
+/*
+@param mixed[] form: This is a form that allows the user to input changes to the equipment (edit)
+		*/
+<form action="UpdateClass.php" method="get">
+Search Text:<input type="text" size="30" name="st">
+<input type="submit" value="search">
+
+</form>
+<?php
+/*
+@param mixed[] This is where the user input in inserted into the code
+*/
+
+if(isset($_REQUEST['st'])){
+	include_once("GpUpdate.php");
+	$obj=new GUpdate();
+	$text=$_REQUEST['st'];
+/*
+@param mixed[] Error message
+*/	
+	if(!$obj->GUpdate($text)){
+		echo "Error updating";
+	}
+/*
+@param mixed[] The table to displays the updated equipment to the user
+*/
+	echo "<table border='1'>";
+echo"<tr><td>Equipment_ID</td><td>Equipment_Name</td>";
+$row=$obj->fetch();
+while($row){
+	echo "<tr><td> ".$row['equipment_id']."</td>""<tr><td> ".$row['equipment_name']."</td>";
+    $row=$obj->fetch();
+}
+	
+}
+?>
+
+</body>
+</html>
